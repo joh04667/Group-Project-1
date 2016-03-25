@@ -9,23 +9,26 @@ for(i=0;i<employees.length;i++){
   console.log(totalComp(employees[i]));
 }
 
-function sti (array){
-  var bonus = 0;
-  switch(array[3]){
-    case 3:
-      bonus = 0.04;
-      break;
-    case 4:
-      bonus = 0.06;
-      break;
-    case 5:
-      bonus = 0.10;
-      break;
-    }
+function sti(array) {
+//var bonus = [0,0,0,.04,.06,.1][array[3]];
+
+var bonus = 0;
+switch(array[3]){
+  case 3:
+    bonus = 0.04;
+    break;
+  case 4:
+    bonus = 0.06;
+    break;
+  case 5:
+    bonus = 0.10;
+    break;
+  }
+
     if(array[1].length === 4){
       bonus += 0.05;
     }
-    if(array[2] > 65000){
+    if(array[2] > 65000 && bonus > 0){
       bonus -= 0.01;
     }
     if(bonus > 0.13){
@@ -35,5 +38,9 @@ function sti (array){
 }
 
 function totalComp(name){
-  return[name[0], (sti(name) * 100).toString() + '%' , parseInt(name[2]) + (name[2] * sti(name)), Math.round(name[2] * sti(name)) ];
+  return [name[0], (sti(name) * 100).toString() + '%' , moneyReadable(parseInt(name[2]) + (name[2] * sti(name))), Math.round(name[2] * sti(name)) ];
+}
+
+function moneyReadable(num) {
+   return "$" + num.toLocaleString({style: 'currency', currency: 'USA'});
 }
