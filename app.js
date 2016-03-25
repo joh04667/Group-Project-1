@@ -10,7 +10,6 @@ for(i=0;i<employees.length;i++){
 }
 
 function sti(array) {
-//var bonus = [0,0,0,.04,.06,.1][array[3]];
 
 var bonus = 0;
 switch(array[3]){
